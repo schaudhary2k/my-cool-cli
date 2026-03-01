@@ -1,0 +1,9 @@
+[package]
+name = "my-cool-cli"
+version = "0.1.0"
+edition = "2026"
+description = "Learning how to ship apps"
+repository = "https://github.com/schaudhary2k/my-cool-cl"
+license = "MIT"
+
+[dependencies]
