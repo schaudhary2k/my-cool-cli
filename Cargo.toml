@@ -1,9 +1,23 @@
 [package]
 name = "my-cool-cli"
 version = "0.1.0"
-edition = "2026"
-description = "Learning how to ship apps"
-repository = "https://github.com/schaudhary2k/my-cool-cl"
+edition = "2024"
+description = "My experimental Rust CLI tool"
+# Add these two lines:
+authors = ["Saurabh Chaudhary <your-email@example.com>"]
+homepage = "https://github.com/schaudhary2k/my-cool-cli"
+repository = "https://github.com/schaudhary2k/my-cool-cli"
 license = "MIT"
 
+[package.metadata.wix]
+upgrade-guid = "A9C5B16B-D8DF-4938-8218-3B881317FBA0"
+path-guid = "B9CE8635-80EE-4828-97E6-F37EECCFEF48"
+license = false
+eula = false
+
 [dependencies]
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
