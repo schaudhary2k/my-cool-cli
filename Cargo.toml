@@ -12,6 +12,8 @@ license = "MIT"
 
 # Configures the 'dist' tool to avoid the MSI installer error
 [package.metadata.dist]
+# This is the missing "address" for the Robot
+tap = "schaudhary2k/homebrew-tap"
 # This tells the robot: "Only give me a zip for Windows, no installer needed"
 windows-archive = ".zip"
 # These are your target platforms
