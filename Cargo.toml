@@ -1,12 +1,12 @@
 [package]
 name = "my-cool-cli"
-version = "0.1.22"
+version = "0.1.23"
 edition = "2024"
-# ... (description, authors, etc.)
+
+[workspace.metadata.dist]
+allow-dirty = ["ci"]
 
 [package.metadata.dist]
-# This is the "Magic" line for single-package repos
-allow-dirty = ["ci"]
 tap = "schaudhary2k/homebrew-tap"
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
 installers = ["shell", "homebrew"]
