@@ -1,5 +1,5 @@
 [workspace]
-members = ["."]
+members = ["cargo:."]
 
 [dist]
 # This ignores the integrity check for your manual .yml edits
