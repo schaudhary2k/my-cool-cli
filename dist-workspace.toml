@@ -1,3 +1,6 @@
+[workspace]
+# This header is required for the parser to acknowledge the file
+
 [dist]
 # This ignores the integrity check for your manual .yml edits
 allow-dirty = ["ci"]
