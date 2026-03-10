@@ -1,6 +1,6 @@
 [package]
 name = "my-cool-cli"
-version = "0.1.6"
+version = "0.1.7"  # Bumped version to 0.1.7 for your next release
 edition = "2024"
 description = "My experimental Rust CLI tool"
 authors = ["Saurabh Chaudhary <chaudharysaurabh@gmail.com>"]
@@ -10,18 +10,25 @@ license = "MIT"
 
 [dependencies]
 
-# Configures the 'dist' tool to avoid the MSI installer error
 [package.metadata.dist]
-# This is the missing "address" for the Robot
+# The repository for your Homebrew Formula
 tap = "schaudhary2k/homebrew-tap"
-# This tells the robot: "Only give me a zip for Windows, no installer needed"
-windows-archive = ".zip"
-# These are your target platforms
+# Targets for Mac, Linux, and Windows
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
 # Explicitly tell it which installers to generate
 installers = ["shell", "homebrew"]
+# NEW: Tell cargo-dist to create .deb files for Ubuntu/Debian users
+linux-packages = ["deb"]
+# Avoids the MSI installer error on Windows
+windows-archive = ".zip"
 
-# The profile that 'dist' will build with
+# NEW: Debian Specific Metadata
+[package.metadata.deb]
+maintainer = "Saurabh Chaudhary <chaudharysaurabh@gmail.com>"
+assets = [
+    ["target/release/my-cool-cli", "usr/bin/my-cool-cli", "755"],
+]
+
 [profile.dist]
 inherits = "release"
 lto = "thin"
