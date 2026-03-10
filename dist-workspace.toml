@@ -1,11 +1,9 @@
 [workspace]
-# Explicitly naming the package here helps the tool resolve the release
-members = ["cargo:my-cool-cli"]
+# "." tells the tool the Cargo.toml is in the root, not a subdirectory
+members = ["cargo:."]
 
 [dist]
-# This ignores the manual changes to the release.yml
 allow-dirty = ["ci"]
-# Global release settings
 formula = "my-cool-cli"
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
 installers = ["shell", "homebrew"]
