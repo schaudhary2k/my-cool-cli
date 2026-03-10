@@ -1,5 +1,5 @@
 [workspace]
-# This header is required for the parser to acknowledge the file
+members = ["."]
 
 [dist]
 # This ignores the integrity check for your manual .yml edits
