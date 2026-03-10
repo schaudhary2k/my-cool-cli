@@ -1,11 +1,12 @@
 [workspace]
-members = ["cargo:."]
+# Explicitly naming the package here helps the tool resolve the release
+members = ["cargo:my-cool-cli"]
 
 [dist]
-# This is the "Magic" line that fixes the panic: 
-# It tells dist exactly which package name to look for
-formula = "my-cool-cli"
+# This ignores the manual changes to the release.yml
 allow-dirty = ["ci"]
+# Global release settings
+formula = "my-cool-cli"
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
 installers = ["shell", "homebrew"]
 tap = "schaudhary2k/homebrew-tap"
