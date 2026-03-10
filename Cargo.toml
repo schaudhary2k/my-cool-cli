@@ -1,6 +1,6 @@
 [package]
 name = "my-cool-cli"
-version = "0.1.12"  # Bumped version to 0.1.12 for your next release
+version = "0.1.13"  # Bumped version to 0.1.13 for your next release
 edition = "2024"
 description = "My experimental Rust CLI tool"
 authors = ["Saurabh Chaudhary <chaudharysaurabh@gmail.com>"]
@@ -10,8 +10,10 @@ license = "MIT"
 
 [dependencies]
 
-[package.metadata.dist]
+[workspace.metadata.dist]
 allow-dirty = ["ci"]
+
+[package.metadata.dist]
 # The repository for your Homebrew Formula
 tap = "schaudhary2k/homebrew-tap"
 # Targets for Mac, Linux, and Windows
