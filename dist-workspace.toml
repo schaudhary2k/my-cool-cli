@@ -2,12 +2,12 @@
 members = ["cargo:."]
 
 [dist]
-# This ignores the manual changes we made to the .yml file
+# This is the "Magic" line that fixes the panic: 
+# It tells dist exactly which package name to look for
+formula = "my-cool-cli"
 allow-dirty = ["ci"]
-# Your specific targets and installers
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
 installers = ["shell", "homebrew"]
 tap = "schaudhary2k/homebrew-tap"
-# This is the line that triggers the .deb creation
 linux-packages = ["deb"]
 windows-archive = ".zip"
