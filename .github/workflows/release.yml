@@ -61,6 +61,11 @@ jobs:
           persist-credentials: false
           submodules: recursive
       - name: Install dist
+      - name: Install cargo-deb
+        run: cargo install cargo-deb
+
+      - name: Build Debian Package
+        run: cargo deb --no-build
         # we specify bash to get pipefail; it guards against the `curl` command
         # failing. otherwise `sh` won't catch that `curl` returned non-0
         shell: bash
