@@ -1,14 +1,24 @@
 [package]
 name = "my-cool-cli"
-version = "0.1.30"
+version = "0.1.31"
 edition = "2024"
-description = "My experimental Rust CLI tool"
-authors = ["Saurabh Chaudhary <chaudharysaurabh@gmail.com>"]
-homepage = "https://github.com/schaudhary2k/my-cool-cli"
-repository = "https://github.com/schaudhary2k/my-cool-cli"
-license = "MIT"
+# ... rest of your package info ...
 
-[dependencies]
+# 1. This header tells the tool "The workspace IS this folder"
+[workspace]
+members = ["."]
+
+# 2. This block must exist here to stop the 'allow-dirty' warning/panic
+[workspace.metadata.dist]
+allow-dirty = ["ci"]
+
+# 3. This block handles your release targets
+[package.metadata.dist]
+tap = "schaudhary2k/homebrew-tap"
+targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
+installers = ["shell", "homebrew"]
+linux-packages = ["deb"]
+windows-archive = ".zip"
 
 [package.metadata.deb]
 maintainer = "Saurabh Chaudhary <chaudharysaurabh@gmail.com>"
