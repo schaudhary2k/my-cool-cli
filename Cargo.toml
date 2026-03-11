@@ -1,6 +1,6 @@
 [package]
 name = "my-cool-cli"
-version = "0.1.28"
+version = "0.1.29"
 edition = "2024"
 description = "My experimental Rust CLI tool"
 authors = ["Saurabh Chaudhary <chaudharysaurabh@gmail.com>"]
@@ -10,29 +10,13 @@ license = "MIT"
 
 [dependencies]
 
-# --- Dist Configuration ---
-[package.metadata.dist]
-# Allows the manual edits we made to .github/workflows/release.yml
-allow-dirty = ["ci"]
-# The repository for your Homebrew Formula
-tap = "schaudhary2k/homebrew-tap"
-# Targets for Mac, Linux, and Windows
-targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
-# Explicitly tell it which installers to generate
-installers = ["shell", "homebrew"]
-# Tell cargo-dist to create .deb files for Ubuntu/Debian users
-linux-packages = ["deb"]
-# Avoids the MSI installer error on Windows
-windows-archive = ".zip"
-
-# --- Debian Specific Metadata ---
+# ONLY keep the Debian asset instructions here
 [package.metadata.deb]
 maintainer = "Saurabh Chaudhary <chaudharysaurabh@gmail.com>"
 assets = [
     ["target/release/my-cool-cli", "usr/bin/my-cool-cli", "755"],
 ]
 
-# --- Build Profile ---
 [profile.dist]
 inherits = "release"
 lto = "thin"
