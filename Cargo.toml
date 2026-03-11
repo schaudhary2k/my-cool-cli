@@ -1,39 +1,32 @@
 [package]
 name = "my-cool-cli"
-version = "0.1.34"
+version = "0.1.35"
 edition = "2024"
 description = "My experimental Rust CLI tool"
 authors = ["Saurabh Chaudhary <chaudharysaurabh@gmail.com>"]
-# These two lines are what 'dist init' is currently screaming for:
 homepage = "https://github.com/schaudhary2k/my-cool-cli"
 repository = "https://github.com/schaudhary2k/my-cool-cli"
 license = "MIT"
 
 [dependencies]
 
-# --- Dist Configuration ---
-[package.metadata.dist]
-# This MUST be here to allow the manual .yml edits we made
+# --- THE FIX: This header is mandatory to bypass the integrity panic ---
+[workspace.metadata.dist]
 allow-dirty = ["ci"]
-# The repository for your Homebrew Formula
+
+[package.metadata.dist]
 tap = "schaudhary2k/homebrew-tap"
-# Targets for Mac, Linux, and Windows
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
-# Explicitly tell it which installers to generate
 installers = ["shell", "homebrew"]
-# Tell cargo-dist to create .deb files for Ubuntu/Debian users
 linux-packages = ["deb"]
-# Avoids the MSI installer error on Windows
 windows-archive = ".zip"
 
-# --- Debian Specific Metadata ---
 [package.metadata.deb]
 maintainer = "Saurabh Chaudhary <chaudharysaurabh@gmail.com>"
 assets = [
     ["target/release/my-cool-cli", "usr/bin/my-cool-cli", "755"],
 ]
 
-# --- Build Profile ---
 [profile.dist]
 inherits = "release"
 lto = "thin"
