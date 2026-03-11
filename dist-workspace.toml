@@ -1,12 +1,11 @@
 [workspace]
-members = ["cargo:."]
+members = ["cargo:my-cool-cli"]
 
 [dist]
-# This MUST be here for the Robot to accept your manual .yml edits
-allow-dirty = ["ci"]
-# This tells the tool exactly which package to build, stopping the panic
+# This tells the tool exactly which package to build
 formula = "my-cool-cli"
-# Global settings
+# This stops the integrity check panic
+allow-dirty = ["ci"]
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
 installers = ["shell", "homebrew"]
 tap = "schaudhary2k/homebrew-tap"
